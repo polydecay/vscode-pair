@@ -6,7 +6,7 @@ let client: Client|null = null;
 let server: Server|null = null;
 
 async function startClient() {
-	stopClienAndtServer();
+	stopClientAndServer();
 
 	if (!workspace.workspaceFolders) {
 		return window.showErrorMessage(
@@ -32,7 +32,7 @@ async function startClient() {
 }
 
 async function startServer() {
-	stopClienAndtServer();
+	stopClientAndServer();
 
 	if (!workspace.workspaceFolders) {
 		return window.showErrorMessage(
@@ -51,7 +51,7 @@ async function startServer() {
 	client = new Client(`http://localhost:${port}`, workspacePath);
 }
 
-function stopClienAndtServer() {
+function stopClientAndServer() {
 	client && client.dispose();
 	server && server.dispose();
 }
@@ -59,16 +59,16 @@ function stopClienAndtServer() {
 export function activate(context: ExtensionContext) {
 	context.subscriptions.push(
 		commands.registerCommand('vscodePair.connect', startClient),
-		commands.registerCommand('vscodePair.disconnect', stopClienAndtServer),
+		commands.registerCommand('vscodePair.disconnect', stopClientAndServer),
 		commands.registerCommand('vscodePair.startServer', startServer),
-		commands.registerCommand('vscodePair.stopServer', stopClienAndtServer),
+		commands.registerCommand('vscodePair.stopServer', stopClientAndServer),
 
 		workspace.onDidChangeWorkspaceFolders(() => {
-			stopClienAndtServer();
+			stopClientAndServer();
 		}),
 	);
 }
 
 export function deactivate() {
-	stopClienAndtServer();
+	stopClientAndServer();
 }
