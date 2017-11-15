@@ -1,0 +1,89 @@
+{
+  "name": "vscode-pair",
+  "displayName": "VSCode Pair",
+  "description": "Real-time pair programming",
+  "version": "0.1.0",
+  "author": "Kim Simonsen",
+  "publisher": "polydecay",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.15.0"
+  },
+  "main": "./build/extension",
+  "activationEvents": [
+    "onCommand:vscodePair.startServer",
+    "onCommand:vscodePair.connect",
+    "onCommand:vscodePair.test"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscodePair.startServer",
+        "title": "VSCodePair: Start Server"
+      },
+      {
+        "command": "vscodePair.stopServer",
+        "title": "VSCodePair: Stop Server"
+      },
+      {
+        "command": "vscodePair.connect",
+        "title": "VSCodePair: Connect"
+      },
+      {
+        "command": "vscodePair.disconnect",
+        "title": "VSCodePair: Disconnect"
+      }
+    ],
+    "configuration": {
+      "title": "VSCode-Pair Configuration",
+      "properties": {
+        "vscodePair.username": {
+          "type": "string",
+          "maxLength": 25,
+          "default": ""
+        },
+        "vscodePair.selectionColor": {
+          "type": "string",
+          "pattern": "^rgba\\([0-9]+, ?[0-9]+, ?[0-9]+, ?([0-1](\\.[0-9]+)?)\\)$",
+          "default": "rgba(192, 64, 255, 0.25)"
+        },
+        "vscodePair.updateInterval": {
+          "type": "integer",
+          "default": 650,
+          "description": "Client update interval in milliseconds"
+        },
+        "vscodePair.server.port": {
+          "type": "integer",
+          "default": 8844
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p ./",
+    "test": "node ./node_modules/vscode/bin/test",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "@types/crc": "^3.4.0",
+    "@types/diff": "^3.2.2",
+    "@types/diff-match-patch": "^1.0.32",
+    "@types/fs-extra": "^4.0.5",
+    "@types/lodash": "^4.14.85",
+    "@types/node": "^8.0.52",
+    "@types/socket.io": "^1.4.31",
+    "@types/socket.io-client": "^1.4.32",
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6"
+  },
+  "dependencies": {
+    "crc": "^3.5.0",
+    "diff-match-patch": "^1.0.0",
+    "fs-extra": "^4.0.2",
+    "jsdiff": "^1.1.1",
+    "lodash": "^4.17.4",
+    "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4"
+  }
+}

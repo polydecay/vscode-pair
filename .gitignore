@@ -1,0 +1,15 @@
+# Logs
+*.log
+npm-debug.log*
+
+# Editors
+.idea/
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# Dependencies
+node_modules/
+
+# Build Output
+build/

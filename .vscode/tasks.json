@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "npm run build --loglevel silent",
+            "problemMatcher": "$tsc-watch",
+            "type": "shell"
+        }
+    ]
+}
