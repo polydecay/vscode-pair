@@ -5,16 +5,18 @@
   "version": "0.1.0",
   "author": "Kim Simonsen",
   "publisher": "polydecay",
-  "private": true,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/polydecay/vscode-pair.git"
+  },
   "engines": {
     "vscode": "^1.15.0"
   },
   "main": "./build/extension",
   "activationEvents": [
     "onCommand:vscodePair.startServer",
-    "onCommand:vscodePair.connect",
-    "onCommand:vscodePair.test"
+    "onCommand:vscodePair.connect"
   ],
   "contributes": {
     "commands": [
